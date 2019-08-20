@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!--1.variable:变量：定义再layout中的变量
+            2. name：别名
+            3.type: 指向的class-->
+        <import type="com.song.songup.databinding_study.view_data.GoodsField"/>
+        <import type="com.song.songup.databinding_study.MainActivity"/>
+        <variable
+            name="clickHandle"
+            type="MainActivity"/>
+        <variable
+            name="goodsInfo"
+            type="GoodsField"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="姓名"
+            android:text="@{goodsInfo.name}" />
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="价格"
+            android:text="@{String.valueOf(goodsInfo.price)}" />
+
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="密码"
+            android:text="@{goodsInfo.details}" />
+
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变name和price"
+            android:clickable="true"
+            android:onClick="@{()->clickHandle.changeGoodsName()}"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变detail和price"
+            android:clickable="true"
+            android:onClick="@{()->clickHandle.changeGoodsDetails()}"/>
+
+    </LinearLayout>
+</layout>

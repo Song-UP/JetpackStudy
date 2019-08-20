@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.song.songup.databinding_study.MainActivity.UserPresent" />
+        <import type="com.song.songup.databinding_study.view_data.User" />
+
+        <variable
+            name="present"
+            type="UserPresent" />
+        <variable
+            name="user"
+            type="User" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}"
+            android:clickable="true"
+            android:onClick="@{(view)->present.onUserNameClick(user)}"
+
+            />
+
+        <!--android:onClickListener="@{present.onUserNameClick}"-->
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.password}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="账号"
+            android:afterTextChanged="@{present.onTextAfterChange}"
+
+            />
+        <!--android:afterTextChanged="@{userPresent.onTextAfterChange}"-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="密码"
+            android:afterTextChanged="@{(editable)->present.afterPassWordChange(editable)}"
+            />
+        <!--android:afterTextChanged="@{userPresent.afterPassWordChange}"-->
+    </LinearLayout>
+</layout>
