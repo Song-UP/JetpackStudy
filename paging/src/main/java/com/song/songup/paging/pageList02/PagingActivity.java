@@ -57,6 +57,7 @@ public class PagingActivity extends AppCompatActivity {
         fruitViewModel.getLiveData().observe(this, new Observer<PagedList<FruitBeen>>() {
             @Override
             public void onChanged(@Nullable PagedList<FruitBeen> fruitBeens) {
+                /** 刷新 Recycleview **/
                 fruitAdapter.submitList(fruitBeens);
             }
         });

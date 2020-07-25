@@ -4,6 +4,7 @@ import android.arch.paging.PagedListAdapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.recyclerview.extensions.AsyncDifferConfig;
+import android.support.v7.recyclerview.extensions.AsyncListDiffer;
 import android.support.v7.util.DiffUtil;
 import android.view.ViewGroup;
 
@@ -12,15 +13,28 @@ import com.song.songup.paging.adapter.BaseRCViewHold;
 import com.song.songup.paging.pageList02.been.FruitBeen;
 
 /**
- * @Description：描述信息
+ * @Description：内部已经做了异步刷新数据,所以只需要传入DiffUtil.ItemCallback就可以了
  * @Author：Song UP
  * @Date：2019/8/15 14:03
  * 修改备注：
  */
 public class FruitAdapter extends PagedListAdapter<FruitBeen,BaseRCViewHold>{
-    Context context;
 
-    public FruitAdapter(Context context) {
+    private Context context;
+
+    public static DiffUtil.ItemCallback<FruitBeen> DIFF_CALLBACK =
+            new DiffUtil.ItemCallback<FruitBeen>() {
+                @Override
+                public boolean areItemsTheSame(FruitBeen oldItem, FruitBeen newItem) {
+                    return oldItem.getId() == newItem.getId();
+                }
+                @Override
+                public boolean areContentsTheSame(FruitBeen oldItem, @NonNull FruitBeen newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
+
+    public FruitAdapter(Context context /*,  AsyncDifferConfig<FruitBeen> asyncListDiff */) {
         super(DIFF_CALLBACK);
         this.context = context;
     }
@@ -45,15 +59,6 @@ public class FruitAdapter extends PagedListAdapter<FruitBeen,BaseRCViewHold>{
         }
     }
 
-    public  static     DiffUtil.ItemCallback<FruitBeen> DIFF_CALLBACK =
-            new DiffUtil.ItemCallback<FruitBeen>() {
-                @Override
-                public boolean areItemsTheSame(FruitBeen oldItem, FruitBeen newItem) {
-                    return oldItem.getId() == newItem.getId();
-                }
-                @Override
-                public boolean areContentsTheSame(FruitBeen oldItem, @NonNull FruitBeen newItem) {
-                    return oldItem.equals(newItem);
-                }
-            };
+
+
 }

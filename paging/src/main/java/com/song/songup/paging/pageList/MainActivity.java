@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
 //        concertViewModel.getConvertLiveData().observe(this, convert->{
 //            myPagedListAdapter.submitList(convert);
 //        });
-//
-//        mRecycleview.setAdapter(myPagedListAdapter);
-//        mRecycleview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
-//        mRecycleview.addItemDecoration(new SimpleDividerDecoration(this));
+
+        mRecycleview.setAdapter(myPagedListAdapter);
+        mRecycleview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
+        mRecycleview.addItemDecoration(new SimpleDividerDecoration(this));
     }
 }

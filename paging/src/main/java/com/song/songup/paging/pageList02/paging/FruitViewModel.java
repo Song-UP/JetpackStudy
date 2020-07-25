@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
 public class FruitViewModel extends ViewModel {
     private Executor myExecutable = Executors.newSingleThreadExecutor();
 
-    //通过config  设置PageList 从DataSource 加载数据方式
+    /** 通过config  设置PageList 从DataSource 加载数据方式 **/
     private PagedList.Config myPagedListConfig = new PagedList.Config.Builder()
             .setInitialLoadSizeHint(20)//设置首次加载的数量
             .setPageSize(10)//设置每一页加载的数量
@@ -30,6 +30,7 @@ public class FruitViewModel extends ViewModel {
 
     private DataSource.Factory<Integer, FruitBeen> myFruitDataSource = new FruitDataSourceFactory();
 
+    /** 通知UI改变 **/
     private LiveData<PagedList<FruitBeen>> fruitLiveDataOfPageList =
             new LivePagedListBuilder(myFruitDataSource, myPagedListConfig)
             .setFetchExecutor(myExecutable)//设置Executor执行器线程
