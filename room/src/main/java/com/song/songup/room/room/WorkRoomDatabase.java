@@ -13,10 +13,10 @@ import android.support.annotation.NonNull;
  * @Description：描述信息
  * @Author：Song UP
  * @Date：2019/8/16 10:13
- * 修改备注：
  * SQLite数据库之上的数据库层，负责处理以前使用SQLiteOpenHelper处理的普通任务。Room数据库使用DAO查询SQLite数据库。
  */
 
+/** 告诉数据库要创建的表以及表名 **/
 @Database(entities = {Word.class}, version=1/*, exportSchema = false*/)
 public abstract class WorkRoomDatabase extends RoomDatabase {
     private static volatile WorkRoomDatabase INSTANCE;

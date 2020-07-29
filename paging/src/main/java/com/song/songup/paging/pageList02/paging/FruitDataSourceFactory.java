@@ -6,20 +6,16 @@ import android.arch.paging.DataSource;
 
 /**
  * @Description：描述信息
- * @Author：Song UP
+ * @Author：Song UP 创建FruitDataSource的工厂类
  * @Date：2019/8/14 20:01
  * 修改备注：
  */
 public class FruitDataSourceFactory extends DataSource.Factory<Integer, FruitBeen> {
 
-    private MutableLiveData<FruitDataSource>  liveData = new MutableLiveData<>();
-
     //LivePagedListBuilder.create（)方法调用的
     @Override
     public DataSource<Integer, FruitBeen> create() {
         FruitDataSource fruitDataSource = new FruitDataSource();
-        liveData.postValue(fruitDataSource);
-
         return fruitDataSource;
     }
 }

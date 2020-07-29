@@ -15,9 +15,17 @@ import android.support.annotation.NonNull;
 public class Word {
 
     @PrimaryKey(autoGenerate = true)
-    @NonNull
+    private long id;
     @ColumnInfo(name = "word")
-    private String word;
+    public String word;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public Word(@NonNull String word) {
         this.word = word;

@@ -22,12 +22,22 @@ public interface WordDao  {
     @Insert
     void insert(Word word);
 
+    @Insert
+    void insertAll(List<Word> word);
+
+    @Delete
+    void delete(Word word);
+
 //    LiveData 用于实时更新数据，类似观察者
     @Query("select * from word_table order by word asc")
     LiveData<List<Word>> queryAll();
 
-    @Query("select * from word_table where word == :myWord. order by word asc")
+    @Query("select * from word_table where word == :myWord order by word asc")
+    LiveData<List<Word>> queryPart(String myWord);
+
+    @Query("select * from word_table where word == :myWord order by word asc")
     LiveData<List<Word>> queryPart(Word myWord);
+
 
 //    LiveData是可以被观察到的数据持有类。它里面缓存或持有了最新的数据。
 //    当数据改变时会通知它的观察者。LiveData是可以感知生命周期的。UI组件只是观察相关数据，不会停止或恢复观察。
