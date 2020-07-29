@@ -1,6 +1,7 @@
 package com.song.songup.room.room;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.support.annotation.NonNull;
  * @Author：Song UP
  * @Date：2019/8/16 9:33
  * 修改备注：创建Entry,一个entry对应一个表
+ * 表示该表User对象则包含以下名称的列：word，和post_code。
  */
 @Entity(tableName = "word_table")
 public class Word {
@@ -18,6 +20,9 @@ public class Word {
     private long id;
     @ColumnInfo(name = "word")
     public String word;
+
+    @Embedded
+    public SubWord subWord;
 
     public long getId() {
         return id;
@@ -45,4 +50,11 @@ public class Word {
     public String toString() {
         return word;
     }
+
+
+    public class SubWord{
+        public String street;
+        @ColumnInfo(name = "post_code") public int postCode;
+    }
+
 }
